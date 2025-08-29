@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import Image from "next/image";
 import logo from "../../public/logo.png";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -48,13 +49,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md shadow-lg ">
         <CardHeader className="text-center space-y-4">
           <div className="flex justify-center">
-            <Image
-              src={logo}
-              alt="Logo"
-              width={56}
-              height={56}
-              priority
-            />
+            <Image src={logo} alt="Logo" width={56} height={56} priority />
           </div>
           <h2 className="text-xl font-semibold text-gray-900 mt-2">
             Login To Your Account
@@ -101,9 +96,11 @@ export default function LoginPage() {
 
             {/* Forgot Password */}
             <div className="text-right">
-              <a href="#" className="text-sm text-blue-500 hover:underline">
-                Forgot Password?
-              </a>
+              <Link href="/forgot-password">
+                <div className="text-sm text-blue-500 hover:underline">
+                  Forgot Password?
+                </div>
+              </Link>
             </div>
 
             {/* Submit Button */}

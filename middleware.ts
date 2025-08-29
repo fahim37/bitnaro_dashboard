@@ -1,4 +1,4 @@
-import { withAuth } from "next-auth/middleware"
+import { withAuth } from "next-auth/middleware";
 
 export default withAuth(
   function middleware(req) {
@@ -8,15 +8,18 @@ export default withAuth(
     callbacks: {
       authorized: ({ token, req }) => {
         // Protect all routes except login
-        if (req.nextUrl.pathname.startsWith("/login")) {
-          return true
+        if (
+          req.nextUrl.pathname.startsWith("/login") ||
+          req.nextUrl.pathname.startsWith("/forgot-password")
+        ) {
+          return true;
         }
-        return !!token
+        return !!token;
       },
     },
-  },
-)
+  }
+);
 
 export const config = {
   matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
-}
+};
